@@ -1,0 +1,30 @@
+package com.example.aicteapp;
+
+import android.os.Bundle;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PolicyActivity extends AppCompatActivity {
+    private WebView webView;
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_policy);
+        webView = (WebView) findViewById(R.id.webViewPolicy);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl(
+        "https://www.aicte-india.org/bureaus/policy-academic-planning");
+        webView.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url){
+                view.loadUrl(url);
+                return true;
+            }
+        });
+    }
+
+}
